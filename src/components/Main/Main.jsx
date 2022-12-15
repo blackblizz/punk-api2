@@ -1,7 +1,9 @@
 import Card from "../Card/Card";
 import { useState, useEffect } from "react";
 
-const Main = () => {
+const Main = (props) => {
+
+  const {searchTerm} = props;
 
     const [ posts, setPosts ] = useState("")
 
@@ -19,15 +21,21 @@ const Main = () => {
 
       useEffect(getBeer, [])
 
+      const filteredPosts = searchTerm && posts.filter((post) => {
+          
+          const beerNameLower = post.name.toLowerCase();
+         
+          return beerNameLower.includes(searchTerm);
+        })
+
   return (
     <>
-    {/* <button onClick={getBeer}>1</button> */}
-    {posts && posts.map((post) => {
-        return <Card info = {post}/>
-      })}
-    </>
-//     <div>{mappedBeers}</div>
-  )
-}
+    {searchTerm && posts ? filteredPosts.map((post) => {
+      return <Card info = {post}/>}) : posts && posts.map((post) => {
+        return <Card info = {post}/>})}
+     
+  </>
+    )
+    }
 
 export default Main
