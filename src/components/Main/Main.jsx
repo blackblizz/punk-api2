@@ -1,24 +1,30 @@
 import Card from "../Card/Card";
-import beers from "../../data/beers";
+import { useState, useEffect } from "react";
 
 const Main = () => {
 
+    const [ posts, setPosts ] = useState("")
+
+    const [ load, setLoad] = useState(true);
+
     const getBeer = () => {
-        fetch ("https://punkapi.com/documentation/v2")
+        fetch ("https://api.punkapi.com/v2/beers")
         .then((res) => {
           return res.json();
         })
         .then((returnedData) => {
-          console.log(returnedData)
+          setPosts(returnedData)
         }) 
       }
 
-//     const mappedBeers = beers.map((beer) => {
-//         return <Card info = {beer}/>
-//       })
+      useEffect(getBeer, [])
+
   return (
     <>
-    <button onClick={getBeer}>1</button>
+    {/* <button onClick={getBeer}>1</button> */}
+    {posts && posts.map((post) => {
+        return <Card info = {post}/>
+      })}
     </>
 //     <div>{mappedBeers}</div>
   )
