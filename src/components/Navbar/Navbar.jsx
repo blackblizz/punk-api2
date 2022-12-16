@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Navbar = (props) => {
 
-  const {setSearchTerm} = props;
+  const {setSearchTerm, setCheckABV, setCheckYear, setCheckPH, checkABV, checkYear, checkPH} = props;
   
  
 
@@ -29,15 +29,21 @@ const Navbar = (props) => {
       <SearchBox handleInput={handleInput} />
       <Filters
           id="1"
-          title="High ABV (>6.0%)"                  
+          title="High ABV (>6.0%)"
+          onChange={setCheckABV}
+          check={checkABV}                  
         />
         <Filters
           id="2"
-          title="Classic Range"          
+          title="Classic Range"
+          onChange={setCheckYear}
+          check={checkYear}             
         />
         <Filters
           id="3"
-          title="Acidic (ph < 4)"          
+          title="Acidic (ph < 4)"
+          onChange={setCheckPH}
+          check={checkPH}             
         />
     </>
   )

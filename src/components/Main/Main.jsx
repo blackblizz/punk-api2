@@ -29,38 +29,48 @@ const Main = (props) => {
       })
 
       const filteredABV = (checkABV) && posts.filter((post) => {
+        console.log(post)
         return post.abv > 6
       })
 
       const filteredYear = (checkYear) && posts.filter((post) => {
-        const firstBrewedYear = post.first_brewed.str.slice(-4)
+        const firstBrewedYear = post.first_brewed.slice(-4)
           return Number(firstBrewedYear) < 2010
       }) 
 
       const filteredPH = (checkPH) && posts.filter((post) => {
         return post.ph < 4
       })
-
       
       
+      const [displayBeers, setDisplayBeers] = useState("");
+      const displayRules = () => {
+        if (posts) {
+          
+        
+        if (searchTerm) {
+          setDisplayBeers(filteredPosts.map((post) => {
+            return <Card info = {post}/>}))
+        } else if (checkABV) {       
+          setDisplayBeers(filteredABV.map((post) => {
+            return <Card info = {post}/>}))
+        } else if (checkYear) {
+          setDisplayBeers(filteredYear.map((post) => {
+            return <Card info = {post}/>}))
+        } else if (checkPH) {
+          setDisplayBeers(filteredPH.map((post) => {
+            return <Card info = {post}/>}))
+        }  else{
+          setDisplayBeers(posts.map((post) => {
+            return <Card info = {post}/>}));
+        }
+    }   
+  }
+    useEffect(() => {displayRules()},[searchTerm, checkABV, checkYear, checkPH, posts])
   return (
     <>
-    {searchTerm && posts ? filteredPosts.map((post) => {
-      return <Card info = {post}/>}) : posts && posts.map((post) => {
-        return <Card info = {post}/>})}
-     
-    {(checkABV) && posts ? filteredABV.map((post) => {
-      return <Card info = {post}/>}) : posts && posts.map((post) => {
-        return <Card info = {post}/>})}
-
-    {(checkYear) && posts ? filteredYear.map((post) => {
-      return <Card info = {post}/>}) : posts && posts.map((post) => {
-        return <Card info = {post}/>})}
-
-    {(checkPH) && posts ? filteredPH.map((post) => {
-      return <Card info = {post}/>}) : posts && posts.map((post) => {
-        return <Card info = {post}/>})}    
-  </>
+    {displayBeers}
+    </>
     )
     }
 

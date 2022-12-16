@@ -17,10 +17,14 @@ export const App = () => {
   return (
     <>
     <section className="nav">
-    <Navbar setSearchTerm={setSearchTerm} 
+    <Navbar 
+    setSearchTerm={setSearchTerm} 
     setCheckABV={setCheckABV}
     setCheckYear={setCheckYear}
-    setCheckPH={setCheckPH}/>
+    setCheckPH={setCheckPH}
+    checkABV={checkABV}
+    checkYear={checkYear}
+    checkPH={checkPH}/>
     </section>
     <section className="cards"> 
     <Main searchTerm={searchTerm}
