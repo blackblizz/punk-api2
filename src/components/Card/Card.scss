@@ -1,0 +1,33 @@
+section.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    justify-content: center;
+    grid-gap: 2rem;
+    margin: 20px;
+}
+
+.beerCard {
+    height: 400px;
+    box-shadow: 0 4px 10px 0 rgba(238, 234, 234, 0.4);
+    border-radius: 5px;
+    justify-content: center;
+    padding-top: 10px;
+    background-color: rgba(139, 131, 131, 0.579);
+    color: rgb(177, 148, 114);
+    font-family: monospace;
+    font-size: large;
+}
+
+.container {
+    padding: 2px 16px;
+  }
+
+img {
+    border-radius: 5px 5px 0 0;
+    
+}
+
+div.beerPic {
+    display: flex;
+    justify-content: center;
+}

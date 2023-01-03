@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Filters.scss"
 
 const Filters = (props) => {
 
@@ -7,8 +8,8 @@ const Filters = (props) => {
   
 
   return (
-    <div>
-        <input id={id} type="checkbox" onChange={()=>onChange(!check)}/> <label htmlFor={id}>{title}</label>
+    <div className="filters">
+        <input className="checkBox" id={id} type="checkbox" onChange={()=>onChange(!check)}/> <label htmlFor={id}>{title}</label>
     </div>
   )
 }

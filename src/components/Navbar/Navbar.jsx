@@ -1,6 +1,7 @@
 import SearchBox from "../SearchBox/SearchBox";
 import Filters from "../Filters/Filters";
 import { useState } from "react";
+import "./Navbar.scss"
 
 const Navbar = (props) => {
 
@@ -26,6 +27,8 @@ const Navbar = (props) => {
 
   return (
     <>
+    <div className="pic"></div>
+    <div className="navbar">
       <SearchBox handleInput={handleInput} />
       <Filters
           id="1"
@@ -45,6 +48,7 @@ const Navbar = (props) => {
           onChange={setCheckPH}
           check={checkPH}             
         />
+    </div>
     </>
   )
 }

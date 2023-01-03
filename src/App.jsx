@@ -1,6 +1,7 @@
 import Main from "./components/Main/Main"
 import Navbar from "./components/Navbar/Navbar"
 import { useState } from "react";
+import "./App.scss"
 
 export const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
